@@ -1,5 +1,91 @@
-{% include 'lynx/base.html' %}
+{% extends 'lynx/base.html' %}
 
+{% block title %}
+Homepage | Edenthought
+{% endblock %}
 {% block content%}
-    <h1> Homepage </h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+
+        <a class="navbar-brand main-heading">
+
+          &nbsp; Edenthought
+
+        </a>
+
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+          <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+
+
+            <ul class="navbar-nav ms-auto">
+
+
+              &nbsp;     &nbsp;     &nbsp;
+
+
+              <li class="nav-item">
+
+                <a class="btn btn-primary navbar-btn" type="button"  href="">Register</a>
+
+              </li>
+
+
+              &nbsp;     &nbsp;     &nbsp;
+
+
+              <li class="nav-item">
+
+                <a class="btn btn-primary navbar-btn" type="button"  href="">Login</a>
+
+              </li>
+
+
+              &nbsp;     &nbsp;     &nbsp;
+
+
+            </ul>
+
+
+          </div>
+
+
+    </nav>
+
+
+    <br>
+
+
+    <body>
+
+        <br>
+        <br>
+
+        <div class="text-center">
+
+        <h2> Edenthought.... The best website out there! </h2>
+
+          <br>
+
+
+          <a class="btn btn-outline-primary" type="button"  href="">Register</a>
+
+
+        </div>
+
+
+    </body>
+
 {% endblock%}
