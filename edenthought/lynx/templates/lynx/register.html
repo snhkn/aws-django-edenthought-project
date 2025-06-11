@@ -1,15 +1,36 @@
 {% extends 'lynx/base.html' %}
+
+{% load crispy_forms_tags %}
+
 {% block title %}
 Register | Edenthought
 {% endblock %}
 {% block content%}
-    <h1> Register </h1>
-    <form method="POST" autocomplete="off">
-        {% csrf_token %}
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <h1> Register </h1>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
 
-        {{form.as_p}}
+            {{form.username|as_crispy_field}}
 
-        <input type="submit" value="Submit"/>
+            <br>
 
-    </form>
+            {{form.email|as_crispy_field}}
+
+            <br>
+
+            {{form.password1|as_crispy_field}}
+
+            <br>
+
+            {{form.password2|as_crispy_field}}
+
+            <br>
+
+            <input class="btn btn-primary" type="submit" value="Submit"/>
+
+        </form>
+    </div>
+    <br>
 {% endblock%}
