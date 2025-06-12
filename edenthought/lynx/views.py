@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . forms import CreateUserForm
+from . models import Profile
 
 # Create your views here.
 
@@ -17,7 +18,11 @@ def register(request):
 
         if form.is_valid():
 
+            current_user = form.save(commit=False)
+
             form.save()
+
+            profile = Profile.objects.create(user=current_user)
 
             return redirect("my-login")
 
