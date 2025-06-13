@@ -1,0 +1,20 @@
+{% extends 'lynx/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Delete Account | Edenthought{% endblock %}
+
+{% block content%}
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <p>Are you sure that you want to delete your account?</p>
+            <br>
+            <a href="{% url 'profile-management' %}">Go Back</a>
+            <br><br>
+            <input class="btn btn-danger" type="submit" value="Delete"/>
+        </form>
+    </div>
+
+{% endblock%}

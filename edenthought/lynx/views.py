@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
-from . forms import CreateUserForm, LoginForm
+from . forms import CreateUserForm, LoginForm, UpdateUserForm
 from . models import Profile
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login
 
 from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -60,5 +62,21 @@ def dashboard(request):
 
 @login_required(login_url='my-login')
 def profile_management(request):
+    user_form = UpdateUserForm(instance=request.user)
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect("dashboard")
 
-    return render(request, 'lynx/profile-management.html')
+    context = {'user_form': user_form}
+    return render(request, 'lynx/profile-management.html', context=context)
+
+@login_required(login_url='my-login')
+def delete_account(request):
+    if request.method == "POST":
+        delete_user = User.objects.get(username=request.user)
+        delete_user.delete()
+        return redirect("")
+
+    return render(request, 'lynx/delete-account.html')

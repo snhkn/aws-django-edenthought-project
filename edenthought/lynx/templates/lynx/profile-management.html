@@ -1,7 +1,26 @@
 {% extends 'lynx/base.html' %}
-{% block title %}
-Profile Management | Edenthought
-{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Profile Management | Edenthought {% endblock %}
+
 {% block content%}
-    <h1> Profile Management </h1>
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <h1> Profile Management </h1>
+        <br>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{user_form.username|as_crispy_field}}
+            <br>
+            {{user_form.email|as_crispy_field}}
+            <br>
+            <input class="btn btn-primary" type="submit" value="Submit"/>
+            <br>
+        </form>
+    </div>
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <a href="{% url 'delete-account' %}"> Delete account </a>
+    </div>
 {% endblock%}
