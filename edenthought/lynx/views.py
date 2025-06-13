@@ -5,6 +5,8 @@ from . models import Profile
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login
 
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def index(request):
@@ -51,11 +53,12 @@ def user_logout(request):
     auth.logout(request)
     return redirect("")
 
-
+@login_required(login_url='my-login')
 def dashboard(request):
 
     return render(request, 'lynx/dashboard.html')
 
+@login_required(login_url='my-login')
 def profile_management(request):
 
     return render(request, 'lynx/profile-management.html')
